@@ -4,6 +4,9 @@ Created on Sun Sep 27 00:34:16 2015
 
 @author: francescoperera
 """
+
+
+from numpy import mean
 table=[]
 
 supersid=[]
@@ -52,7 +55,8 @@ for line in open('/Users/francescoperera/Documents/Health Tech/2012Datastripped.
     
     row=[]
     count=0
-    for number in line.split(','):
+    for element in line.split(','):
+        number=float(element)
         row.append(float(number))
         if count==0:
             supersid.append(number)
@@ -68,7 +72,10 @@ for line in open('/Users/francescoperera/Documents/Health Tech/2012Datastripped.
         count+=1
     table.append(row)
 
-index_array=[]   
+index_array=[]
+
+
+
 for index in range(len(supersid)):
     index_array.append(index) # for debugging purposes
     #for supersid(index):
@@ -76,7 +83,6 @@ for index in range(len(supersid)):
     if cancerdx[index]==1:
         if sex[index]==1:
             if racev1x[index]==1:
-                print 'hello'
                 CMWFI.append(faminc12[index])
             elif racev1x[index]==2:
                 CMBFI.append(faminc12[index])
@@ -129,19 +135,68 @@ for index in range(len(supersid)):
                 FPIFI.append(faminc12[index])
             elif racev1x[index]==6:
                 FMFI.append(faminc12[index])
+                
+# these ifs  adda a 0 to the empty lists, if there are any                
 
+    
 
-print CMWFI
+print CMPIFI
 print
-print CMBFI
+print CFAFI
 print
-print CMAAFI
+print CFPIFI
 print
-print CMAFI
+print CFMFI
+
+CMWFI_ave=mean(CMWFI)
+CMBFI_ave=mean(CMBFI)
+CMAAFI_ave=mean(CMAAFI) 
+CMAFI_ave=mean(CMAFI)
+CMPIFI_ave=mean(CMPIFI)
+CMMFI_ave=mean(CMMFI)
+
+CFWFI_ave=mean(CFWFI)
+CFBFI_ave=mean(CFBFI)
+CFAAFI_ave=mean(CFAAFI)
+CFAFI_ave=mean(CFAFI)
+CFPIFI_ave=mean(CFPIFI)
+CFMFI_ave=mean(CFMFI)
+
+MWFI_ave=mean(MWFI)
+MBFI_ave=mean(MBFI)
+MAAFI_ave=mean(MAAFI)
+MAFI_ave=mean(MAFI)
+MPIFI_ave=mean(MPIFI)
+MMFI_ave=mean(MMFI)
+
+FWFI_ave=mean(FWFI)
+FBFI=mean(FBFI)
+FAAFI=mean(FAAFI)
+FAFI=mean(FAFI)
+FPIFI=mean(FPIFI)
+FMFI=mean(FMFI)
+
+#print CMBFI_ave
+#print CMAAFI_ave
+#print CMAFI_ave
+#print CMPIFI_ave
+#print CMPIFI_ave
+#print CMMFI_ave
+
+
+def add(x1,x2,x3,x4,x5,x6):
+    """ helper function that takes 6 inputs and returns their sum """
+    return x1+x2+x3+x4+x5+x6
+
+all_CM_ave=add(CMWFI_ave,CMBFI_ave,CMAAFI_ave,CMAFI_ave,,CMMFI_ave)
+all_M_ave=add(MWFI_ave,MBFI_ave,MAAFI_ave,MAFI_ave,CMPIFI_ave,MMFI_ave)
+
+#print all_CM_ave
+#print all_M_ave
+#print index_array   
 
 
 
-#print index_array                    
                     
                 
             
